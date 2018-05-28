@@ -22,6 +22,19 @@ corruption_tweets <- search_tweets2(
   , n = 600000, retryonratelimit = TRUE, include_rts = FALSE
 )
 
+### 2. Create time series of tweets
+
+ts_plot(corruption_tweets, "days", col = "#3695d8") +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) +
+  ggplot2::labs(
+    x = NULL, y = NULL,
+    title = "Tweets on Corruption 18-27 May 2018",
+    subtitle = "In Arabic, English, French, Russian and Spanish",
+    caption = "\n"
+  )
+
+
 ##We prepare the data for content analysis
 
 sample_27may <- corruption_tweets[sample(nrow(corruption_tweets), 10000), ]
